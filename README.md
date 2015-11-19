@@ -11,10 +11,10 @@ The challenge in this Udacity project was to optimize this online portfolio for 
 * inline CSS in index.html in production code with gulp critical
 
 * in app/view/js/main.js: 
-	1 generate 10 sliding pizzas and not 200.
-	2 make for loops more efficient by caching variables outside the for-loop
-	3 cache variable top in line 504
-	4 use getElementById/getElementByClass and not querySelector because of better performance
+	* generate 10 sliding pizzas and not 200.
+	* make for loops more efficient by caching variables ouside the for-loop
+	* cache variable top in line 504
+	* use getElementById/getElementByClass and not querySelector because of better performance
 
 * use <meta name=viewport content="width=device-width, initial-scale=1"> in head for index.html
 * async google anlytics script
