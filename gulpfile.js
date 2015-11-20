@@ -21,7 +21,7 @@ gulp.task('browserSync', function() {
 gulp.task('watch', ['browserSync'], function (){
   // Reloads the browser whenever HTML or JS files change
   gulp.watch('app/*.html', browserSync.reload); 
-  gulp.watch('app/js/**/*.js', browserSync.reload);
+  gulp.watch('**//*.js', browserSync.reload);
   gulp.watch('**/*.css', browserSync.reload);  
 });
 
@@ -48,9 +48,3 @@ gulp.task('critical', function () {
         .pipe(critical({base: 'app/', inline: true, css: ['app/css/style.css']}))
         .pipe(gulp.dest('dist'));
 });
-
-
-
-   
-
-    

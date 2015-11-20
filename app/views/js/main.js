@@ -18,6 +18,8 @@ cameron *at* udacity *dot* com
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
+'use strict';
+
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
   "Pepperoni",
@@ -448,13 +450,15 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
-  // Make for loop more efficient by using variable l
+  // Make for loop more efficient by using variable l and chaching variables container, dx and newwidth outside loop
   function changePizzaSizes(size) {
-    var cachedLength = document.querySelectorAll(".randomPizzaContainer").length;
+    var container =  document.getElementsByClassName('randomPizzaContainer');
+    var cachedLength = container.length;
+    var dx;
+    var newwidth;
     for (var i = 0;  i < cachedLength; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+      dx = determineDx(container[i], size);
+      newwidth = container[i].style.width;
     }
   }
 
@@ -470,8 +474,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
+var pizzasDiv = document.getElementById("randomPizzas"); // cache variable outside for-loop
+for (var i = 2; i < 100; i++) { 
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -503,11 +507,12 @@ function updatePositions() {
   frame++;
   var top = document.body.scrollTop; // caching variable for code efficiency
   window.performance.mark("mark_start_frame");
-// Make for loop more efficient by using variable l
-  var items = document.querySelectorAll('.mover');
+// Make for loop more efficient by using variable l and cache phase outside for-loop
+  var items = document.getElementsByClassName('mover');
+  var phase;
   var cachedLength = items.length;
   for (var i = 0;  i < cachedLength; i++) {
-    var phase = Math.sin((top / 1250) + (i % 5));
+    phase = Math.sin((top / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -525,12 +530,20 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-// Decrease amount of skiding pizzas
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 15; i++) {
-    var elem = document.createElement('img');
+  var rowTop = 0;
+  var elem; // cache variable outside for loop
+  for (var i = 0; i < 200; i++) {
+    
+    rowTop = (Math.floor(i / cols) * s);
+// stop creating pizzas after the for-loop reaches a row that is below the bottom of the user's screen
+     if (rowTop > window.innerHeight) {
+      break;
+    }
+
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
