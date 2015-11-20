@@ -46,7 +46,7 @@ Profile, optimize, measure... and then lather, rinse, and repeat. Go
 	* stop creating pizzas after the for-loop reaches a row that is below the bottom of the user's screen. Calculate this using window.innerHeight in the Eventlistener on line 533.
 	* cache variable elem outside for loop on line 537.
 
-* use <meta name=viewport content="width=device-width, initial-scale=1"> in head for index.html
+* use viewport met tag in head for index.html
 * async google anlytics script
 * media atribute to css links
 * add hardware accelerated CSS to views/css/style.css
