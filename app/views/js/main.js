@@ -458,7 +458,8 @@ var resizePizzas = function(size) {
     var newwidth;
     for (var i = 0;  i < cachedLength; i++) {
       dx = determineDx(container[i], size);
-      newwidth = container[i].style.width;
+      newwidth = container[i].offsetWidth + dx + 'px';
+      container[i].style.width = newwidth;
     }
   }
 
@@ -535,7 +536,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   var rowTop = 0;
   var elem; // cache variable outside for loop
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 48; i++) {
     
     rowTop = (Math.floor(i / cols) * s);
 // stop creating pizzas after the for-loop reaches a row that is below the bottom of the user's screen
