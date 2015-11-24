@@ -1,10 +1,9 @@
 var gulp = require('gulp');
 // Requires the gulp-sass plugin
-var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
-var uncss = require('gulp-uncss');
-var imagemin = require('gulp-imagemin');
-var critical = require('critical').stream;
+//var uncss = require('gulp-uncss');
+//var imagemin = require('gulp-imagemin');
+//var critical = require('critical').stream;
 
 
 
@@ -14,8 +13,8 @@ gulp.task('browserSync', function() {
     server: {
       baseDir: 'app'
     },
-  })
-})
+  });
+});
 
 
 gulp.task('watch', ['browserSync'], function (){
@@ -25,13 +24,14 @@ gulp.task('watch', ['browserSync'], function (){
   gulp.watch('**/*.css', browserSync.reload);  
 });
 
-gulp.task('cleancss', function() {
+gulp.task('cleancss', function() { 
     gulp.src('**/*.css')
         .pipe(uncss({
             html: ['app/views/pizza.html',]
         }))
         .pipe(gulp.dest('./out'));
 });
+
 
 gulp.task('images', function(){
   return gulp.src('app/**/*.+(png|jpg|jpeg|gif|svg)')

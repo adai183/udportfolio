@@ -21,7 +21,9 @@
     "gulp": "^3.9.0",
     "gulp-imagemin": "^2.4.0",
     "gulp-sass": "^2.1.0",
-    "gulp-uncss": "^1.0.4"
+    "gulp-uncss": "^1.0.4",
+    "imagemin": "^4.0.0",
+    "uncss": "^0.12.1"
   },
   "dependencies": {
     "critical": "^0.6.0"
