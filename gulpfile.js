@@ -1,9 +1,16 @@
-var gulp = require('gulp');
-// Requires the gulp-sass plugin
-var browserSync = require('browser-sync');
-//var uncss = require('gulp-uncss');
-//var imagemin = require('gulp-imagemin');
-//var critical = require('critical').stream;
+// The directories './dist' and './out' I use in my gulfile are not production directories. 
+// I only used the as build directories to check on the gulp processed files. 
+// The root directory is app/.
+
+
+var gulp = require('gulp'),
+    browserSync = require('browser-sync'),
+    symdiff = require('gulp-symdiff'),
+    html = require('symdiff-html'),
+    css = require('symdiff-css'),
+    uncss = require('gulp-uncss'),
+    imagemin = require('gulp-imagemin'),
+    critical = require('critical').stream;
 
 
 
@@ -44,7 +51,20 @@ gulp.task('images', function(){
 
 // Generate & Inline Critical-path CSS
 gulp.task('critical', function () {
-    return gulp.src('app/*.html')
-        .pipe(critical({base: 'app/', inline: true, css: ['app/css/style.css']}))
+    return gulp.src('app/views/pizza.html')
+        .pipe(critical({base: 'app/views', inline: true, css: ['app/views/css/style.css']}))
         .pipe(gulp.dest('dist'));
+});
+
+// Checks CSS for unused classes
+gulp.task('checkcss', function() {
+  gulp.src(['app/views/css/*.css','app/views/pizza.html'])  // ALL the files
+    .pipe(symdiff({
+        templates: [html],  // list all templates plugins
+        css: [css],          // list all css plugins
+        ignore: [/^ignore/]  // classes to ignore
+    })
+    .on('error', function() {
+        process.exit(1);    // break the build
+    }));
 });

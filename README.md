@@ -45,13 +45,14 @@ Profile, optimize, measure... and then lather, rinse, and repeat. Go
 	* cache variable l and phase outside for-loop(line 514)
 	* stop creating pizzas after the for-loop reaches a row that is below the bottom of the user's screen. Calculate this using window.innerHeight in the Eventlistener on line 533.
 	* cache variable elem outside for loop on line 537.
-
+* in app/view/pizza.html
+	*inline css using gulp critical
 * use viewport met tag in head for index.html
 * async google anlytics script
 * media atribute to css links
 * add hardware accelerated CSS to views/css/style.css
 
-
+###Note: The directories './dist' and './out' I use in my gulfile are not production directories. I only used the as build directories to check on the gulp processed files. The root directory is app/.
 
 
 ### My additional Resources 

@@ -18,11 +18,15 @@
   "homepage": "https://github.com/adai183/udportfolio#readme",
   "devDependencies": {
     "browser-sync": "^2.10.0",
+    "critical": "^0.6.0",
     "gulp": "^3.9.0",
     "gulp-imagemin": "^2.4.0",
     "gulp-sass": "^2.1.0",
+    "gulp-symdiff": "0.0.5",
     "gulp-uncss": "^1.0.4",
     "imagemin": "^4.0.0",
+    "symdiff-css": "0.0.3",
+    "symdiff-html": "0.0.2",
     "uncss": "^0.12.1"
   },
   "dependencies": {
