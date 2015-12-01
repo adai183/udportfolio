@@ -45,6 +45,7 @@ Profile, optimize, measure... and then lather, rinse, and repeat. Go
 	* cache variable l and phase outside for-loop(line 514)
 	* stop creating pizzas after the for-loop reaches a row that is below the bottom of the user's screen. Calculate this using window.innerHeight in the Eventlistener on line 533.
 	* cache variable elem outside for loop on line 537.
+	* extract dx and newwidth from statement on line 457
 * in app/view/pizza.html
 	*inline css using gulp critical
 * use viewport met tag in head for index.html
